@@ -41,8 +41,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   
   const { data: role, isLoading, isError } = useQuery({
     queryKey: ["userRole", user?.id],
-    queryFn: () => fetchUserRole(user!.id),
-    enabled: !!user?.id, 
+    queryFn: () => fetchUserRole(user!.id), // Calls this function 
+    enabled: !!user?.id, // Once user.id is available
   });
 
   useEffect(() => {

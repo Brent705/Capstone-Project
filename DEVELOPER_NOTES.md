@@ -31,8 +31,7 @@ important for the client and users.
 ## Conventions 
 
 
-Tanstack React Query is used when inserting or fetching from Supabase. It's almost always done in an isolated function that is 
-just logic and doesn't know about React.
+Tanstack React Query is used when fetching from Supabase. It's almost always done in an isolated function that is just logic and doesn't know about React.
 
 
 Example:
