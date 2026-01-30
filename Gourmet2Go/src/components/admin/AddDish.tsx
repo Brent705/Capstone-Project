@@ -10,7 +10,7 @@ const dishSchema = z.object({
     .number("Price must be a number")
     .positive("Price must be positive")
     .refine((val) => Number((val * 100).toFixed(0)) === val * 100, "Max 2 decimal places"),
-  category: z.string().min(1, "Category is required"),
+  category: z.enum(['Other', 'Soups', 'Salads', 'Sandwiches']),
 });
 
 type DishFormData = z.infer<typeof dishSchema>;
@@ -47,9 +47,6 @@ export const AddDish = () => {
 
   return (
     <div className="p-6 space-y-4 max-w-md items-center mx-auto">
-      {successMsg && <p>{successMsg}</p>}
-      {errorMsg && <p>{errorMsg}</p>}
-
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
           <label>Name:</label>
@@ -93,6 +90,9 @@ export const AddDish = () => {
           {isSubmitting ? "Submitting..." : "Add Dish"}
         </button>
       </form>
+
+      {successMsg && <p>{successMsg}</p>}
+      {errorMsg && <p>{errorMsg}</p>}
     </div>
   );
 };
